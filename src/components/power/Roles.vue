@@ -49,7 +49,7 @@
                     closable
                     type="warning"
                     :key="item3.id"
-                    v-for="(item3, i3) in item2.children"
+                    v-for="(item3) in item2.children"
                     >{{ item3.authName }}</el-tag
                   >
                 </el-col>

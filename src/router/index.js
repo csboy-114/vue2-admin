@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/Login.vue'
-import Home from '@/views/Home.vue'
-import Welcome from '../components/Welcome.vue'
-import Users from '../components/users/Users.vue'
-import Rights from '../components/power/Rights.vue'
-import Roles from '../components/power/Roles.vue'
+// import Home from '@/views/Home.vue'
+// import Welcome from '../components/Welcome.vue'
+// import Users from '../components/users/Users.vue'
+// import Rights from '../components/power/Rights.vue'
+// import Roles from '../components/power/Roles.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,24 +19,28 @@ const routes = [
   },
   {
     path:'/home',
-    component:Home,
+    component:()=>import(/* webpackChunkName: "Home" */'../views/Home.vue'),
     redirect:'/welcome',
     children:[
       {
         path:'/welcome',
-        component:Welcome
+        component:()=>import(/* webpackChunkName: "Welcome" */'../components/Welcome.vue')
       },
       {
         path:'/users',
-        component:Users
+        component:()=>import(/* webpackChunkName: "Users" */'../components/users/Users.vue')
       },
       {
         path:'/rights',
-        component:Rights
+        component:()=>import(/* webpackChunkName: "Rights" */'../components/power/Rights.vue')
       },
       {
         path:'/roles',
-        component:Roles
+        component:()=>import(/* webpackChunkName: "Roles" */'../components/power/Roles.vue')
+      },
+      {
+        path:'/categories',
+        component:()=>import(/* webpackChunkName: "Cate" */'../components/goods/Cate.vue')
       }
     ]
   }
