@@ -19,6 +19,7 @@
           :collapse-transition="false"
           router
           :default-active="activePath"
+          ref="menu"
         >
           <el-submenu :index="item.id+''" :key="item.id" v-for="item in menuList">
             <template slot="title">
@@ -59,6 +60,10 @@ export default {
   },
   created(){
     this.getMenuList()
+     if(!window.sessionStorage.getItem('activePath')){
+      window.sessionStorage.setItem('activePath','/users')
+      this.$router.push('/users')
+    }
     this.activePath=window.sessionStorage.getItem('activePath')
   },
   methods: {
