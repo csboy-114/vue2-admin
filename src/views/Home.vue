@@ -20,6 +20,7 @@
           router
           :default-active="activePath"
           ref="menu"
+          @open="handleOpen"
         >
           <el-submenu :index="item.id+''" :key="item.id" v-for="item in menuList">
             <template slot="title">
@@ -67,6 +68,15 @@ export default {
     this.activePath=window.sessionStorage.getItem('activePath')
   },
   methods: {
+    handleOpen(key){
+      console.log(key);
+     const res= this.menuList.find(item=>{
+        return item.id==key
+      }).children
+     this.activePath='/'+res[0].path
+     this.$router.push(this.activePath)
+     window.sessionStorage.setItem('activePath',this.activePath)
+    },
     saveNavState(activePath){
       window.sessionStorage.setItem('activePath',activePath)
       this.activePath=activePath
