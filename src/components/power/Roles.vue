@@ -14,7 +14,7 @@
         </el-col>
       </el-row>
     </el-card>
-    <el-table :data="rolelist" border stripe>
+    <el-table row-key="id" :data="rolelist" border stripe>
       <el-table-column type="expand">
         <template slot-scope="scope">
           <el-row
